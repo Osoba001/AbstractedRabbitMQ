@@ -2,6 +2,7 @@
 {
     public interface IPublisher:IDisposable
     {
-        void Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration);
+        Task Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration);
+        Task Publish<T>(T message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration);
     }
 }
