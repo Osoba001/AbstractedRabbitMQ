@@ -1,11 +1,8 @@
 ﻿using AbstractedRabbitMQ.Setup;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AbstractedRabbitMQ.Subscribers
 {
@@ -29,7 +26,7 @@ namespace AbstractedRabbitMQ.Subscribers
         public Subscriber(IConnectionProvider connectionProvider, string exchange, string exchangeType, string queue, string routingKey, TimeSpan? timeToLive, ushort prefetchCount = 5)
             : this(connectionProvider, exchange, exchangeType, queue, routingKey, timeToLive, prefetchCount, true, false, false) { }
 
-        public void Subscribe(Func<string, IDictionary<string, object>, bool> callBack)
+        public Task Subscribe(Func<string, IDictionary<string, object>, bool> callBack)
         {
             var consumer = new EventingBasicConsumer(model);
 
@@ -44,8 +41,9 @@ namespace AbstractedRabbitMQ.Subscribers
                 }
             };
             model.BasicConsume(queue, false, consumer);
+            return Task.CompletedTask;
         }
-        public void SubscribeAsync(Func<string, IDictionary<string, object>, Task<bool>> callBack)
+        public Task SubscribeAsync(Func<string, IDictionary<string, object>, Task<bool>> callBack)
         {
             var consumer = new EventingBasicConsumer(model);
 
@@ -60,6 +58,7 @@ namespace AbstractedRabbitMQ.Subscribers
                 }
             };
             model.BasicConsume(queue, false, consumer);
+            return Task.CompletedTask;
         }
         public void Dispose()
         {
@@ -67,7 +66,6 @@ namespace AbstractedRabbitMQ.Subscribers
             GC.SuppressFinalize(this);
         }
 
-        // Protected implementation of Dispose pattern.
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed)
@@ -79,6 +77,67 @@ namespace AbstractedRabbitMQ.Subscribers
             _disposed = true;
         }
 
-        
+        public Task Subscribe<T>(Func<SubResult<T>, IDictionary<string, object>, bool> callBack)
+        {
+            var consumer = new EventingBasicConsumer(model);
+
+            consumer.Received += (sender, e) =>
+            {
+                SubResult<T> res = new();
+                var bodyInBitArray = e.Body.ToArray();
+                try
+                {
+                    var message = Encoding.UTF8.GetString(bodyInBitArray);
+                    var result = JsonConvert.DeserializeObject<T>(message);
+                    if (result == null)
+                        res.AddError($"Unable to convert the response message to type of {typeof(T)}");
+                    else
+                        res.Value= result;
+                    bool success = callBack(res, e.BasicProperties.Headers);
+                    if (success)
+                        model.BasicAck(e.DeliveryTag, true);
+
+                }
+                catch (Exception ex)
+                {
+                    res.AddError(ex.Message);
+                }
+                
+            };
+            model.BasicConsume(queue, false, consumer);
+            return Task.CompletedTask;
+        }
+
+        public Task SubscribeAsyc<T>(Func<SubResult<T>, IDictionary<string, object>, Task<bool>> callBack)
+        {
+            var consumer = new EventingBasicConsumer(model);
+
+            consumer.Received += async (sender, e) =>
+            {
+                SubResult<T> res = new();
+                var bodyInBitArray = e.Body.ToArray();
+                try
+                {
+                    var message = Encoding.UTF8.GetString(bodyInBitArray);
+                    var result = JsonConvert.DeserializeObject<T>(message);
+                    if (result == null)
+                        res.AddError($"Unable to convert the response message to type of {typeof(T)}");
+                    else
+                        res.Value = result;
+                    bool success = await callBack(res, e.BasicProperties.Headers);
+                    if (success)
+                        model.BasicAck(e.DeliveryTag, true);
+
+                }
+                catch (Exception ex)
+                {
+                    res.AddError(ex.Message);
+
+                }
+
+            };
+            model.BasicConsume(queue, false, consumer);
+            return Task.CompletedTask;
+        }
     }
 }
