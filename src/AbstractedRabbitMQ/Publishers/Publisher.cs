@@ -16,7 +16,7 @@ namespace AbstractedRabbitMQ.Publishers
             this.exchangeName = exchangeName;
             _model = connectionProvier.GetConnection().CreateModel();
 
-            timeToLive = timeToLive ?? TimeSpan.FromMinutes(1);
+            timeToLive ??= TimeSpan.FromMinutes(1);
             var ttl = new Dictionary<string, object> { { "x-message-ttl", timeToLive.Value.TotalMilliseconds } };
             _model.ExchangeDeclare(exchangeName, exchangeType, durable, autodelete, ttl);
 
