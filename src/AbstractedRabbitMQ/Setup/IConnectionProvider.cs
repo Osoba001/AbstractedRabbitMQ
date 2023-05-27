@@ -2,9 +2,8 @@
 
 namespace AbstractedRabbitMQ.Setup
 {
-    public interface IConnectionProvider
+    public interface IConnectionProvider: IDisposable
     {
-        void Dispose();
         IConnection GetConnection();
     }
 }
