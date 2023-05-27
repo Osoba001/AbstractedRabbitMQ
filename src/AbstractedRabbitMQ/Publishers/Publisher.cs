@@ -1,4 +1,5 @@
 ﻿using AbstractedRabbitMQ.Setup;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System.Text;
 
@@ -24,7 +25,7 @@ namespace AbstractedRabbitMQ.Publishers
         public Publisher(IConnectionProvider connectionProvier, string exchangeName, string exchangeType, TimeSpan? timeToLive)
             : this(connectionProvier, exchangeName, exchangeType, timeToLive, true, false) { }
 
-        public void Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
+        public Task Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
         {
             var MessageInByte = Encoding.UTF8.GetBytes(message);
             var properties = _model.CreateBasicProperties();
@@ -35,6 +36,7 @@ namespace AbstractedRabbitMQ.Publishers
                 properties.Expiration = expiration?.TotalMilliseconds.ToString();
 
             _model.BasicPublish(exchangeName, routingKey, properties, MessageInByte);
+            return Task.CompletedTask;
         }
         public void Dispose()
         {
@@ -48,6 +50,21 @@ namespace AbstractedRabbitMQ.Publishers
             if (disposing)
                 _model.Close();
             _disposed = true;
+        }
+
+        public Task Publish<T>(T message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
+        {
+            var messageString=JsonConvert.SerializeObject(message);
+            var MessageInByte = Encoding.UTF8.GetBytes(messageString);
+            var properties = _model.CreateBasicProperties();
+            properties.Persistent = true;
+            if (messageAttribute != null)
+                properties.Headers = messageAttribute;
+            if (expiration != null)
+                properties.Expiration = expiration?.TotalMilliseconds.ToString();
+
+            _model.BasicPublish(exchangeName, routingKey, properties, MessageInByte);
+            return Task.CompletedTask;
         }
     }
 }
