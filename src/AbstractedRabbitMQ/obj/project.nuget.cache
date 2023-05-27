@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "3JYuaZPQEChEiD+C3muQ21TfxrWoTt+yN/qlKxqu0Mg2tJ3sOdZaWWCXcR5LelwxZRZJcF6pd4Tb1y1RWVhLaw==",
+  "dgSpecHash": "ncA7zBXMPEspKlWYCmaQhgYFHT7fvWxSt2Et4fgO0CSWjiJvt+2GYBVTu43GufpZm57bL1+GMNrcG6IST6VuAw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\DELL\\.nuget\\packages\\rabbitmq.client\\6.5.0\\rabbitmq.client.6.5.0.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
