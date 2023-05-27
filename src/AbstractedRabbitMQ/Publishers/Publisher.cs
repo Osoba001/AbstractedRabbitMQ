@@ -11,7 +11,7 @@ namespace AbstractedRabbitMQ.Publishers
         private bool _disposed;
 
         public Publisher(IConnectionProvider connectionProvier, string exchangeName, string exchangeType, TimeSpan? timeToLive,
-           bool durable = false, bool autodelete = false)
+           bool durable = true, bool autodelete = false)
         {
             this.exchangeName = exchangeName;
             _model = connectionProvier.GetConnection().CreateModel();
@@ -22,7 +22,7 @@ namespace AbstractedRabbitMQ.Publishers
 
         }
         public Publisher(IConnectionProvider connectionProvier, string exchangeName, string exchangeType, TimeSpan? timeToLive)
-            : this(connectionProvier, exchangeName, exchangeType, timeToLive, false, false) { }
+            : this(connectionProvier, exchangeName, exchangeType, timeToLive, true, false) { }
 
         public void Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
         {
