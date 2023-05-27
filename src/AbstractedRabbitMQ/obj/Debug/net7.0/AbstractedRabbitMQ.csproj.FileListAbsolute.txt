@@ -1,0 +1,12 @@
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\bin\Debug\net7.0\AbstractedRabbitMQ.deps.json
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\bin\Debug\net7.0\AbstractedRabbitMQ.dll
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\bin\Debug\net7.0\AbstractedRabbitMQ.pdb
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\AbstractedRabbitMQ.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\AbstractedRabbitMQ.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\AbstractedRabbitMQ.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\AbstractedRabbitMQ.AssemblyInfo.cs
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\AbstractedRabbitMQ.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\AbstractedRabbitMQ.dll
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\refint\AbstractedRabbitMQ.dll
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\AbstractedRabbitMQ.pdb
+C:\Users\DELL\Desktop\Apps\Microservices\AbstractedRabbitMQ\src\AbstractedRabbitMQ\obj\Debug\net7.0\ref\AbstractedRabbitMQ.dll
