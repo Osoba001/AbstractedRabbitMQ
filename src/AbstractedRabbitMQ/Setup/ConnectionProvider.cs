@@ -14,9 +14,8 @@ namespace AbstractedRabbitMQ.Setup
                 Uri = new Uri(url),
             };
             if (clientProvidedName != null)
-            {
                 _factory.ClientProvidedName = clientProvidedName;
-            }
+
             _connection = _factory.CreateConnection();
         }
         public IConnection GetConnection() => _connection;
