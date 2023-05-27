@@ -19,7 +19,7 @@ namespace AbstractedRabbitMQ.Subscribers
         {
             this.queue = queue;
             model = connectionProvider.GetConnection().CreateModel();
-            timeToLive = timeToLive ?? TimeSpan.FromMinutes(1);
+            timeToLive??= TimeSpan.FromMinutes(1);
             var ttl = new Dictionary<string, object> { { "x-message-ttl", timeToLive.Value.TotalMilliseconds } };
             model.ExchangeDeclare(exchange, exchangeType, arguments: ttl);
             model.QueueDeclare(queue, durable, exclusive, autodelete, ttl);
@@ -45,6 +45,22 @@ namespace AbstractedRabbitMQ.Subscribers
             };
             model.BasicConsume(queue, false, consumer);
         }
+        public void SubscribeAsync(Func<string, IDictionary<string, object>, Task<bool>> callBack)
+        {
+            var consumer = new EventingBasicConsumer(model);
+
+            consumer.Received += async (sender, e) =>
+            {
+                var bodyInBitArray = e.Body.ToArray();
+                var message = Encoding.UTF8.GetString(bodyInBitArray);
+                bool success = await callBack(message, e.BasicProperties.Headers);
+                if (success)
+                {
+                    model.BasicAck(e.DeliveryTag, true);
+                }
+            };
+            model.BasicConsume(queue, false, consumer);
+        }
         public void Dispose()
         {
             Dispose(true);
@@ -62,5 +78,7 @@ namespace AbstractedRabbitMQ.Subscribers
 
             _disposed = true;
         }
+
+        
     }
 }
