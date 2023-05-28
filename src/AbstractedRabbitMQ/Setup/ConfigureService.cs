@@ -6,27 +6,26 @@ namespace AbstractedRabbitMQ.Setup
 {
     public static class ConfigureService
     {
-        public static IServiceCollection AddRabbitMQConnection(this IServiceCollection services, string url,string? clientProvidedName)
+        public static IServiceCollection AddRabbitMQConnection(this IServiceCollection services, Action<ConnectionConfig> options)
         {
-            services.AddScoped<IConnectionProvider>(x => new ConnectionProvider(url, clientProvidedName));
+            var config = new ConnectionConfig();
+            options.Invoke(config);
+            services.AddScoped<IConnectionProvider>(x => new ConnectionProvider(config));
             return services;
         }
 
-        public static IServiceCollection AddRabbitMQPublisher(this IServiceCollection services, string exchangeName, string exchangeType, TimeSpan? timeToLive,
-           bool durable = true, bool autodelete = false)
+        public static IServiceCollection AddRabbitMQPublisher(this IServiceCollection services, Action<PublisherConfig> options)
         {
-            services.AddScoped<IPublisher>(x => new Publisher(x.GetRequiredService<IConnectionProvider>(),
-                exchangeName,exchangeType,timeToLive,durable,autodelete));
+            var config = new PublisherConfig();
+            options.Invoke(config);
+            services.AddScoped<IPublisher>(x => new Publisher(x.GetRequiredService<IConnectionProvider>(),config));
             return services;
         }
-        public static IServiceCollection AddRabbitMQSubscriber(this IServiceCollection services, 
-             string exchange, 
-            string exchangeType, string queue, string routingKey, 
-            TimeSpan? timeToLive, ushort prefetchCount = 5,
-            bool durable = true, bool exclusive = false, bool autodelete = false)
+        public static IServiceCollection AddRabbitMQSubscriber(this IServiceCollection services, Action<SubScribeConfig> options)
         {
-            services.AddScoped<ISubscriber>(x => new Subscriber(x.GetRequiredService<IConnectionProvider>(),
-                exchange, exchangeType,queue,routingKey, timeToLive, prefetchCount,durable,exclusive,autodelete));
+            var config=new SubScribeConfig();
+            options.Invoke(config);
+            services.AddScoped<ISubscriber>(x => new Subscriber(x.GetRequiredService<IConnectionProvider>(),config));
             return services;
         }
     }
