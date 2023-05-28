@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B7D3A818-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractedRabbitMQ", "src\AbstractedRabbitMQ\AbstractedRabbitMQ.csproj", "{0E199724-47A5-4CBB-AF4E-2A698934E996}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractRabbitMQ.Test", "AbstractRabbitMQ.Test\AbstractRabbitMQ.Test.csproj", "{015AFF40-B468-42B0-B68E-A9C25B3BB894}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{0E199724-47A5-4CBB-AF4E-2A698934E996}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E199724-47A5-4CBB-AF4E-2A698934E996}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E199724-47A5-4CBB-AF4E-2A698934E996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015AFF40-B468-42B0-B68E-A9C25B3BB894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015AFF40-B468-42B0-B68E-A9C25B3BB894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{015AFF40-B468-42B0-B68E-A9C25B3BB894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{015AFF40-B468-42B0-B68E-A9C25B3BB894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0E199724-47A5-4CBB-AF4E-2A698934E996} = {E250F55F-7527-4FA7-97D9-F355A1349115}
+		{015AFF40-B468-42B0-B68E-A9C25B3BB894} = {B7D3A818-7072-4540-8E90-2D97A4F3384E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CAA7920-C443-4764-A491-E4DA7CA18F3D}
