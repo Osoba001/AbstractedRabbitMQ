@@ -11,20 +11,14 @@ namespace AbstractedRabbitMQ.Publishers
         private readonly IModel _model;
         private bool _disposed;
 
-        public Publisher(IConnectionProvider connectionProvier, string exchangeName, string exchangeType, TimeSpan? timeToLive,
-           bool durable = true, bool autodelete = false)
+        public Publisher(IConnectionProvider connectionProvier, PublisherConfig config)
         {
-            this.exchangeName = exchangeName;
+            this.exchangeName = config.exchange;
             _model = connectionProvier.GetConnection().CreateModel();
-
-            timeToLive ??= TimeSpan.FromMinutes(1);
-            var ttl = new Dictionary<string, object> { { "x-message-ttl", timeToLive.Value.TotalMilliseconds } };
-            _model.ExchangeDeclare(exchangeName, exchangeType, durable, autodelete, ttl);
+            var ttl = new Dictionary<string, object> { { "x-message-ttl", config.timeToLive.TotalMilliseconds } };
+            _model.ExchangeDeclare(exchangeName, config.exchangeType.ToString(), config.durable, config.autodelete, ttl);
 
         }
-        public Publisher(IConnectionProvider connectionProvier, string exchangeName, string exchangeType, TimeSpan? timeToLive)
-            : this(connectionProvier, exchangeName, exchangeType, timeToLive, true, false) { }
-
         public Task Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
         {
             var MessageInByte = Encoding.UTF8.GetBytes(message);

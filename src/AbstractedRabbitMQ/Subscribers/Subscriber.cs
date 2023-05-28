@@ -12,20 +12,16 @@ namespace AbstractedRabbitMQ.Subscribers
         private readonly IModel model;
         private bool _disposed;
 
-        public Subscriber(IConnectionProvider connectionProvider, string exchange, string exchangeType, string queue, string routingKey, TimeSpan? timeToLive, ushort prefetchCount = 5, bool durable = true, bool exclusive = false, bool autodelete = false)
+        public Subscriber(IConnectionProvider connectionProvider, SubScribeConfig config)
         {
-            this.queue = queue;
+            queue = config.queue;
             model = connectionProvider.GetConnection().CreateModel();
-            timeToLive??= TimeSpan.FromMinutes(1);
-            var ttl = new Dictionary<string, object> { { "x-message-ttl", timeToLive.Value.TotalMilliseconds } };
-            model.ExchangeDeclare(exchange, exchangeType, arguments: ttl);
-            model.QueueDeclare(queue, durable, exclusive, autodelete, ttl);
-            model.QueueBind(queue, exchange, routingKey);
-            model.BasicQos(0, prefetchCount: prefetchCount, global: false);
+            var ttl = new Dictionary<string, object> { { "x-message-ttl", config.timeToLive.TotalMilliseconds } };
+            model.ExchangeDeclare(config.exchange, config.exchangeType.ToString(), arguments: ttl);
+            model.QueueDeclare(queue, config.durable, config.exclusive, config.autodelete, ttl);
+            model.QueueBind(queue, config.exchange, config.routingKey);
+            model.BasicQos(config.prefetchSize, prefetchCount: config.prefetchCount, global: config.global);
         }
-        public Subscriber(IConnectionProvider connectionProvider, string exchange, string exchangeType, string queue, string routingKey, TimeSpan? timeToLive, ushort prefetchCount = 5)
-            : this(connectionProvider, exchange, exchangeType, queue, routingKey, timeToLive, prefetchCount, true, false, false) { }
-
         public Task Subscribe(Func<string, IDictionary<string, object>, bool> callBack)
         {
             var consumer = new EventingBasicConsumer(model);

@@ -7,14 +7,14 @@ namespace AbstractedRabbitMQ.Setup
         private ConnectionFactory _factory;
         private IConnection _connection;
         private bool _disposed;
-        public ConnectionProvider(string url, string? clientProvidedName)
+        public ConnectionProvider(ConnectionConfig config)
         {
             _factory = new ConnectionFactory
             {
-                Uri = new Uri(url),
+                Uri = new Uri(config.Url),
             };
-            if (clientProvidedName != null)
-                _factory.ClientProvidedName = clientProvidedName;
+            if (config.ClientProvideName != null)
+                _factory.ClientProvidedName = config.ClientProvideName;
 
             _connection = _factory.CreateConnection();
         }
