@@ -104,7 +104,7 @@ namespace AbstractedRabbitMQ.Subscribers
             return Task.CompletedTask;
         }
 
-        public Task SubscribeAsyc<T>(Func<SubResult<T>, IDictionary<string, object>, Task<bool>> callBack)
+        public Task SubscribeAsync<T>(Func<SubResult<T>, IDictionary<string, object>, Task<bool>> callBack)
         {
             var consumer = new EventingBasicConsumer(model);
 
