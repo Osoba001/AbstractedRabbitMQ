@@ -20,6 +20,8 @@ namespace AbstractedRabbitMQ.Setup
         {
             var config = new PublisherConfig();
             options.Invoke(config);
+            if (!exchanges.Contains(config.exchangeType))
+                throw new ArgumentException($"Invalid ExchangeType: {config.exchangeType}");
             services.AddScoped<IPublisher>(x => new Publisher(x.GetRequiredService<IConnectionProvider>(),config));
             return services;
         }
@@ -27,10 +29,11 @@ namespace AbstractedRabbitMQ.Setup
         {
             var config=new SubScribeConfig();
             options.Invoke(config);
+            if (!exchanges.Contains(config.exchangeType))
+                throw new ArgumentException($"Invalid ExchangeType: {config.exchangeType}");
             services.AddScoped<ISubscriber>(x => new Subscriber(x.GetRequiredService<IConnectionProvider>(),config));
             return services;
         }
-
-       
+        public static string[] exchanges =  {"","direct","topic","fanout","headers"};
     }
 }
