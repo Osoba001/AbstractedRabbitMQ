@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "vAVOmcIFlyXx2cv7A3rMrjMW5DRvNXCuFfx5u90+8FAN/Vb+agmuTVbL2YKZmLOoxccU2TfveBCGAnJDU/9ckA==",
+  "dgSpecHash": "P6ljdQPGdWrJkDesWbwoWdCWm+Fz1HzhoLkAECdwB4TzMuP55Bcs3a+Siouqi3PCcsR2KJJQN5jLkypuL6I56A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
+  "projectFilePath": "C:\\Users\\kelly.osoba\\Desktop\\APPs\\Messages\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\rabbitmq.client\\6.5.0\\rabbitmq.client.6.5.0.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
+    "C:\\Users\\kelly.osoba\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\kelly.osoba\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\kelly.osoba\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\kelly.osoba\\.nuget\\packages\\rabbitmq.client\\6.5.0\\rabbitmq.client.6.5.0.nupkg.sha512",
+    "C:\\Users\\kelly.osoba\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\kelly.osoba\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }
