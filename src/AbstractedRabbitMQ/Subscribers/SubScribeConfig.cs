@@ -1,9 +1,4 @@
-﻿using AbstractedRabbitMQ.Constants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RabbitMQ.Client;
 
 namespace AbstractedRabbitMQ.Subscribers
 {
@@ -14,14 +9,14 @@ namespace AbstractedRabbitMQ.Subscribers
             durable = true;
             timeToLive = TimeSpan.FromMinutes(1);
             exchange = "default-direct-exchange";
-            exchangeType = ExchangeTypeRMQ.direct;
+            exchangeType = ExchangeType.Direct;
             queue = "default-queue";
             routingKey = "default-routingkey";
             prefetchCount= 5;
             prefetchSize = 0;
         }
         public string exchange { get; set; }
-        public ExchangeTypeRMQ exchangeType { get; set; }
+        public string exchangeType { get; set; }
         public string queue { get; set; }
         public string routingKey { get; set; }
         public TimeSpan timeToLive { get; set; }

@@ -1,5 +1,4 @@
-﻿using AbstractedRabbitMQ.Constants;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 
 namespace AbstractedRabbitMQ.Publishers
 {
@@ -10,10 +9,10 @@ namespace AbstractedRabbitMQ.Publishers
             durable= true;
             timeToLive=TimeSpan.FromMinutes(1);
             exchange = "default-direct-exchange";
-            exchangeType = ExchangeTypeRMQ.direct;
+            exchangeType = ExchangeType.Direct;
         }
         public string exchange { get; set; }
-        public ExchangeTypeRMQ exchangeType { get; set; }
+        public string exchangeType { get; set; }
         public TimeSpan timeToLive { get; set; }
         public bool durable { get; set;}
         public bool autodelete { get; set; }
