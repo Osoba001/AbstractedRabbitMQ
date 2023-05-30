@@ -8,6 +8,10 @@ namespace AbstractedRabbitMQ.Setup
 {
     public class ConnectionConfig
     {
+        public ConnectionConfig()
+        {
+            this.Url = string.Empty;
+        }
         public string Url { get; set; }
         public string? ClientProvideName { get; set; }
     }

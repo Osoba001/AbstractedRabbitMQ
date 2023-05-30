@@ -10,6 +10,8 @@ namespace AbstractedRabbitMQ.Setup
         {
             var config = new ConnectionConfig();
             options.Invoke(config);
+            if (config.Url == string.Empty)
+                throw new ArgumentException("RabbitMQ url is required.");
             services.AddScoped<IConnectionProvider>(x => new ConnectionProvider(config));
             return services;
         }
@@ -28,5 +30,7 @@ namespace AbstractedRabbitMQ.Setup
             services.AddScoped<ISubscriber>(x => new Subscriber(x.GetRequiredService<IConnectionProvider>(),config));
             return services;
         }
+
+       
     }
 }
