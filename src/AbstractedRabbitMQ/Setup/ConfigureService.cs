@@ -25,6 +25,7 @@ namespace AbstractedRabbitMQ.Setup
             services.AddScoped<IPublisher>(x => new Publisher(x.GetRequiredService<IConnectionProvider>(),config));
             return services;
         }
+
         public static IServiceCollection AddRabbitMQSubscriber(this IServiceCollection services, Action<SubScribeConfig> options)
         {
             var config=new SubScribeConfig();
@@ -34,6 +35,7 @@ namespace AbstractedRabbitMQ.Setup
             services.AddScoped<ISubscriber>(x => new Subscriber(x.GetRequiredService<IConnectionProvider>(),config));
             return services;
         }
+
         public static string[] exchanges =  {"","direct","topic","fanout","headers"};
     }
 }
