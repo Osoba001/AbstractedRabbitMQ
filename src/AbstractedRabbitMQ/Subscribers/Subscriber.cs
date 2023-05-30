@@ -56,23 +56,6 @@ namespace AbstractedRabbitMQ.Subscribers
             model.BasicConsume(queue, false, consumer);
             return Task.CompletedTask;
         }
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed)
-                return;
-
-            if (disposing)
-                model?.Close();
-
-            _disposed = true;
-        }
-
         public Task Subscribe<T>(Func<SubResult<T>, IDictionary<string, object>, bool> callBack)
         {
             var consumer = new EventingBasicConsumer(model);

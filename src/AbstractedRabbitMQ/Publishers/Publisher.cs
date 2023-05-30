@@ -32,20 +32,6 @@ namespace AbstractedRabbitMQ.Publishers
             _model.BasicPublish(exchangeName, routingKey, properties, MessageInByte);
             return Task.CompletedTask;
         }
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed) return;
-
-            if (disposing)
-                _model.Close();
-            _disposed = true;
-        }
-
         public Task Publish<T>(T message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
         {
             var messageString=JsonConvert.SerializeObject(message);

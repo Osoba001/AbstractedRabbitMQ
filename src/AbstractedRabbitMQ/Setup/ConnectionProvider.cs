@@ -20,18 +20,6 @@ namespace AbstractedRabbitMQ.Setup
         }
         public IConnection GetConnection() => _connection;
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed) return;
-
-            if (disposing)
-                _connection.Dispose();
-            _disposed = true;
-        }
+ 
     }
 }
