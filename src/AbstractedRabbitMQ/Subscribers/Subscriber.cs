@@ -17,7 +17,7 @@ namespace AbstractedRabbitMQ.Subscribers
             queue = config.queue;
             model = connectionProvider.GetConnection().CreateModel();
             var ttl = new Dictionary<string, object> { { "x-message-ttl", config.timeToLive.TotalMilliseconds } };
-            model.ExchangeDeclare(config.exchange, config.exchangeType.ToString(), arguments: ttl);
+            model.ExchangeDeclare(config.exchange, config.exchangeType, arguments: ttl);
             model.QueueDeclare(queue, config.durable, config.exclusive, config.autodelete, ttl);
             model.QueueBind(queue, config.exchange, config.routingKey);
             model.BasicQos(config.prefetchSize, prefetchCount: config.prefetchCount, global: config.global);

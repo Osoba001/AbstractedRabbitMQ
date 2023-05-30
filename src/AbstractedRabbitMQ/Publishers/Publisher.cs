@@ -16,7 +16,7 @@ namespace AbstractedRabbitMQ.Publishers
             this.exchangeName = config.exchange;
             _model = connectionProvier.GetConnection().CreateModel();
             var ttl = new Dictionary<string, object> { { "x-message-ttl", config.timeToLive.TotalMilliseconds } };
-            _model.ExchangeDeclare(exchangeName, config.exchangeType.ToString(), config.durable, config.autodelete, ttl);
+            _model.ExchangeDeclare(exchangeName, config.exchangeType, config.durable, config.autodelete, ttl);
 
         }
         public Task Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
