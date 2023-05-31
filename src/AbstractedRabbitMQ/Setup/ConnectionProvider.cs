@@ -6,7 +6,6 @@ namespace AbstractedRabbitMQ.Setup
     {
         private ConnectionFactory _factory;
         private IConnection _connection;
-        private bool _disposed;
         public ConnectionProvider(ConnectionConfig config)
         {
             _factory = new ConnectionFactory

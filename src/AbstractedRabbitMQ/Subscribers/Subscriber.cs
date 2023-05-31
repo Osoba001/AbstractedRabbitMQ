@@ -10,7 +10,6 @@ namespace AbstractedRabbitMQ.Subscribers
     {
         private readonly string queue;
         private readonly IModel model;
-        private bool _disposed;
 
         public Subscriber(IConnectionProvider connectionProvider, SubScribeConfig config)
         {
@@ -36,7 +35,7 @@ namespace AbstractedRabbitMQ.Subscribers
                     model.BasicAck(e.DeliveryTag, true);
                 }
             };
-            model.BasicConsume(queue, false, consumer);
+            model.BasicConsume(queue, false,consumer:consumer);
             return Task.CompletedTask;
         }
         public Task SubscribeAsync(Func<string, IDictionary<string, object>, Task<bool>> callBack)

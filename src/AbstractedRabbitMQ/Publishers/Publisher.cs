@@ -9,7 +9,6 @@ namespace AbstractedRabbitMQ.Publishers
     {
         private readonly string exchangeName;
         private readonly IModel _model;
-        private bool _disposed;
 
         public Publisher(IConnectionProvider connectionProvier, PublisherConfig config)
         {
