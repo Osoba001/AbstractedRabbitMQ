@@ -260,19 +260,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kelly.osoba\\.nuget\\packages\\": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kelly.osoba\\Desktop\\APPs\\Messages\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
       "projectName": "AbstractedRabbitMQ",
-      "projectPath": "C:\\Users\\kelly.osoba\\Desktop\\APPs\\Messages\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
-      "packagesPath": "C:\\Users\\kelly.osoba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kelly.osoba\\Desktop\\APPs\\Messages\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\obj\\",
+      "projectPath": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kelly.osoba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -280,8 +280,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.pkg.github.com/cyphercrescent/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
@@ -328,7 +327,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
