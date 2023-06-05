@@ -260,19 +260,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
+      "projectUniqueName": "C:\\Users\\lenovo\\Documents\\Projects\\2023\\GitHub\\fin\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
       "projectName": "AbstractedRabbitMQ",
-      "projectPath": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Desktop\\Apps\\Microservices\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\obj\\",
+      "projectPath": "C:\\Users\\lenovo\\Documents\\Projects\\2023\\GitHub\\fin\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\AbstractedRabbitMQ.csproj",
+      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lenovo\\Documents\\Projects\\2023\\GitHub\\fin\\AbstractedRabbitMQ\\src\\AbstractedRabbitMQ\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -327,7 +327,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

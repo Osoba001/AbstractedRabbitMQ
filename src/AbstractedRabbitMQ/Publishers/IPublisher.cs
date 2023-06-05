@@ -2,7 +2,7 @@
 {
     public interface IPublisher
     {
-        Task Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration);
-        Task Publish<T>(T message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration);
+        Task PublishAsync(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration);
+        Task PublishAsync<T>(T message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration);
     }
 }
