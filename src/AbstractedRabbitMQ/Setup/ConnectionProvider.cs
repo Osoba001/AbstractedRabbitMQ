@@ -2,10 +2,10 @@
 
 namespace AbstractedRabbitMQ.Setup
 {
-    public class ConnectionProvider : IConnectionProvider
+    internal class ConnectionProvider : IConnectionProvider
     {
-        private ConnectionFactory _factory;
-        private IConnection _connection;
+        private readonly ConnectionFactory _factory;
+        private readonly IConnection _connection;
         public ConnectionProvider(ConnectionConfig config)
         {
             _factory = new ConnectionFactory
@@ -17,8 +17,7 @@ namespace AbstractedRabbitMQ.Setup
 
             _connection = _factory.CreateConnection();
         }
-        public IConnection GetConnection() => _connection;
-
+        public IModel GetModel()=>_connection.CreateModel();
  
     }
 }
