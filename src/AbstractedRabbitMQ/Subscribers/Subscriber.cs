@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AbstractedRabbitMQ.Subscribers
 {
-    public class Subscriber : ISubscriber
+    internal class Subscriber : ISubscriber
     {
         private readonly string queue;
         private readonly IModel model;
@@ -14,7 +14,7 @@ namespace AbstractedRabbitMQ.Subscribers
         public Subscriber(IConnectionProvider connectionProvider, SubScribeConfig config)
         {
             queue = config.queue;
-            model = connectionProvider.GetConnection().CreateModel();
+            model = connectionProvider.GetModel();
             var ttl = new Dictionary<string, object> { { "x-message-ttl", config.timeToLive.TotalMilliseconds } };
             model.ExchangeDeclare(config.exchange, config.exchangeType, arguments: ttl);
             model.QueueDeclare(queue, config.durable, config.exclusive, config.autodelete, ttl);
