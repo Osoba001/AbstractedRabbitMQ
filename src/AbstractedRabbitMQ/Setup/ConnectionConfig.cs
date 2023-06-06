@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbstractedRabbitMQ.Setup
 {
-    public class ConnectionConfig
+    public sealed class ConnectionConfig
     {
         public ConnectionConfig()
         {
