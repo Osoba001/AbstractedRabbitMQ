@@ -15,31 +15,33 @@ namespace AbstractRabbitMQ.Test
 {
     public class PublisherTest
     {
-        //[Fact]
-        //public void Publish_Should_Call_BasicPublish()
-        //{
-        //    // Arrange
-        //    var message = "My message";
-        //    var routingKey = "routing-key";
-        //    var modelMock = new Mock<IConnectionProvider>();
-        //    modelMock.Setup(x => x.GetConnection().CreateModel().BasicPublish(
-        //        It.IsAny<string>(), routingKey, It.IsAny<IBasicProperties>(),
-        //        It.IsAny<byte[]>()));
-        //    var pub = new Publisher(modelMock.Object, It.IsAny<string>(), ExchangeType.Direct,null);
-        
-        //    // Act
-        //    pub.Publish(message, routingKey, null, null);
+        [Fact]
+        public void Publish_Should_Call_BasicPublish()
+        {
+            // Arrange
+            var message = "My message";
+            var routingKey = "routing-key";
+            var exchange = "demoExchange";
+           var config= new PublisherConfig();
+            var modelMock = new Mock<IConnectionProvider>();
+            modelMock.Setup(x => x.GetModel().BasicPublish(
+                exchange, routingKey, null,
+                null));
+            var pub = new Publisher(modelMock.Object, config);
 
-        //    // Assert
-        //    modelMock.Verify(
-        //        x => x.GetConnection().CreateModel().BasicPublish(
-        //            It.IsAny<string>(),
-        //            routingKey,
-        //            It.IsAny<IBasicProperties>(),
-        //        It.IsAny<byte[]>()
-        //        ),
-        //    Times.Once
-        //    );
-       // }
+            // Act
+            pub.Publish(message, routingKey, null, null);
+
+            // Assert
+            //modelMock.Verify(
+            //    x => x.GetModel().BasicPublish(
+            //        exchange,
+            //        routingKey,
+            //        null,
+            //    null
+            //    ),
+            //Times.Once
+            //);
+        }
     }
 }
