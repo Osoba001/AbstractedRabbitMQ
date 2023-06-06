@@ -2,7 +2,7 @@
 
 namespace AbstractedRabbitMQ.Publishers
 {
-    public class PublisherConfig
+    public sealed class PublisherConfig
     {
         public PublisherConfig()
         {

@@ -4,6 +4,6 @@ namespace AbstractedRabbitMQ.Setup
 {
     public interface IConnectionProvider
     {
-        IConnection GetConnection();
+        IModel GetModel();
     }
 }

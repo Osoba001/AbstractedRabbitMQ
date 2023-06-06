@@ -2,7 +2,7 @@
 
 namespace AbstractedRabbitMQ.Subscribers
 {
-    public class SubScribeConfig
+    public sealed class SubScribeConfig
     {
         public SubScribeConfig()
         {

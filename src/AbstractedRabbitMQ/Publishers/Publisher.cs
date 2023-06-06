@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AbstractedRabbitMQ.Publishers
 {
-    public class Publisher : IPublisher
+    internal class Publisher : IPublisher
     {
         private readonly string exchangeName;
         private readonly IModel _model;
@@ -13,7 +13,7 @@ namespace AbstractedRabbitMQ.Publishers
         public Publisher(IConnectionProvider connectionProvier, PublisherConfig config)
         {
             this.exchangeName = config.exchange;
-            _model = connectionProvier.GetConnection().CreateModel();
+            _model = connectionProvier.GetModel();
             var ttl = new Dictionary<string, object> { { "x-message-ttl", config.timeToLive.TotalMilliseconds } };
             _model.ExchangeDeclare(exchangeName, config.exchangeType, config.durable, config.autodelete, ttl);
 
@@ -33,7 +33,7 @@ namespace AbstractedRabbitMQ.Publishers
             });
         }
 
-        private void Publish<T>(T message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
+        public void Publish<T>(T message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
         {
             var messageString = JsonConvert.SerializeObject(message);
             var MessageInByte = Encoding.UTF8.GetBytes(messageString);
@@ -47,7 +47,7 @@ namespace AbstractedRabbitMQ.Publishers
             _model.BasicPublish(exchangeName, routingKey, properties, MessageInByte);
         }
 
-        private void Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
+        public void Publish(string message, string routingKey, IDictionary<string, object>? messageAttribute, TimeSpan? expiration)
         {
             var MessageInByte = Encoding.UTF8.GetBytes(message);
             var properties = _model.CreateBasicProperties();
